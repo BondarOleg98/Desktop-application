@@ -12,3 +12,17 @@ E:\Институт\Mercurial\Trade\Trade\bin\Debug\Trade.Data.dll
 E:\Институт\Mercurial\Trade\Trade\bin\Debug\Trade.Data.pdb
 E:\Институт\Mercurial\Trade\Trade\obj\Debug\Trade.AdditionalForm.resources
 E:\Институт\Mercurial\Trade\Trade\obj\Debug\Trade.RecursionForm.resources
+E:\Project_retail\Trade\Trade\bin\Debug\Trade.exe.config
+E:\Project_retail\Trade\Trade\bin\Debug\Trade.exe
+E:\Project_retail\Trade\Trade\bin\Debug\Trade.pdb
+E:\Project_retail\Trade\Trade\bin\Debug\Trade.Data.dll
+E:\Project_retail\Trade\Trade\bin\Debug\Trade.Data.pdb
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.csprojResolveAssemblyReference.cache
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.AdditionalForm.resources
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.MainForm.resources
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.Properties.Resources.resources
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.RecursionForm.resources
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.csproj.GenerateResource.Cache
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.csproj.CoreCompileInputs.cache
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.exe
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.pdb

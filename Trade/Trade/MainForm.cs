@@ -387,7 +387,7 @@ namespace Trade
             }
             catch (Exception)
             {
-                MessageBox.Show("Please enter an integer number");
+                MessageBox.Show("Error: number is not valid");
 
             }
             tbIndexator.Clear();

@@ -4,3 +4,9 @@ E:\Институт\Mercurial\Trade\Trade.Data\obj\Debug\Trade.Data.csprojResolv
 E:\Институт\Mercurial\Trade\Trade.Data\obj\Debug\Trade.Data.csproj.CoreCompileInputs.cache
 E:\Институт\Mercurial\Trade\Trade.Data\obj\Debug\Trade.Data.dll
 E:\Институт\Mercurial\Trade\Trade.Data\obj\Debug\Trade.Data.pdb
+E:\Project_retail\Trade\Trade.Data\bin\Debug\Trade.Data.dll
+E:\Project_retail\Trade\Trade.Data\bin\Debug\Trade.Data.pdb
+E:\Project_retail\Trade\Trade.Data\obj\Debug\Trade.Data.csprojResolveAssemblyReference.cache
+E:\Project_retail\Trade\Trade.Data\obj\Debug\Trade.Data.csproj.CoreCompileInputs.cache
+E:\Project_retail\Trade\Trade.Data\obj\Debug\Trade.Data.dll
+E:\Project_retail\Trade\Trade.Data\obj\Debug\Trade.Data.pdb
