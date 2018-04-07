@@ -10,7 +10,10 @@ namespace Trade.Data
     {
         static public Dictionary<Guid, Organization> Organizations = new Dictionary<Guid, Organization>();
         private int data_creation; 
+
         public string Name { get; private set; }
+        public string Bank_account { get; private set; }
+        public string Head { get; private set; }
         public int Data_creation
         {
             set
@@ -29,14 +32,12 @@ namespace Trade.Data
                 return data_creation;
             }
         }
-        public string Bank_account { get; private set; }
-        public string Head { get; private set; }
 
         private Guid _accountingID;
 
-        public Organization(string name, int data_creation, string bank_account, string head)
+        public Organization(string name_org, int data_creation, string bank_account, string head)
         {
-            Name = name; 
+            Name = name_org; 
             Data_creation = data_creation;
             Bank_account = bank_account;
             Head = head;

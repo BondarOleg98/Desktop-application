@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Base.cs" />
     <Compile Include="Accounting.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="Recursion.cs" />
     <Compile Include="Сommodity.cs" />
     <Compile Include="Item_product.cs" />
