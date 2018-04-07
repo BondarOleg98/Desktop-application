@@ -45,7 +45,9 @@
     <Compile Include="Accounting.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="Manager.cs" />
+    <Compile Include="Products.cs" />
     <Compile Include="Recursion.cs" />
+    <Compile Include="TypeProduct.cs" />
     <Compile Include="Сommodity.cs" />
     <Compile Include="Item_product.cs" />
     <Compile Include="Organization.cs" />
@@ -53,7 +55,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <None Include="ObjectModel.cd" />
+    <None Include="HierarchyClass.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

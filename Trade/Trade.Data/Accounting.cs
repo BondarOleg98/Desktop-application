@@ -29,14 +29,13 @@ namespace Trade.Data
             Number_acquired = number_acquired;
             Capital_organization = capital_organization;
 
-            Accounting remainder = new Accounting();
-            Remainder =remainder.registration(Number_sold, Number_acquired);
+            Remainder =registration(Number_sold, Number_acquired);
         
             _Remainder = registration();
         }
         public Accounting() { }
 
-        private int registration(int Number_sold, int Number_acquired)
+        static private int registration(int Number_sold, int Number_acquired)
         {
             int remainder = Number_acquired - Number_sold;
             if(remainder==0)
@@ -81,7 +80,6 @@ namespace Trade.Data
                 _organizationID = value.ID;
             }
         }
-        public Organization Organizations { get; }
 
         ~Accounting() { }
 

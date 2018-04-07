@@ -1,15 +1,20 @@
 ﻿using System;
+using Trade.Data;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace Trade.Data
 {
     public class Organization : Base
     {
         static public Dictionary<Guid, Organization> Organizations = new Dictionary<Guid, Organization>();
-        private int data_creation; 
+        private int data_creation;
+
+        private static int last_year = 2200;
 
         public string Name { get; private set; }
         public string Bank_account { get; private set; }
@@ -18,7 +23,7 @@ namespace Trade.Data
         {
             set
             {
-                if ((value < 0)||(value>2200))
+                if ((value < 0)||(value>last_year))
                 {
                     data_creation = 0;
                 }
@@ -46,15 +51,15 @@ namespace Trade.Data
 
         public Organization() { }
 
-        private string Exist_organization(int data_creation)
+        private static string Exist_organization(int data_creation)
         {
             int year = DateTime.Now.Year - data_creation;
-            if(year<=0)
+            if((year<=0)||(year>last_year))
             {
                 year = 0;
                 return " Existed for " + year;
             }
-            else
+            else 
             {
                 return " Existed for " + year;
             }
@@ -104,12 +109,11 @@ namespace Trade.Data
 
         public override string ToString()
         {
-            Organization year = new Organization();
             
             return "Name: " + Name + "/" +
                    "Head: " + Head + "/" +
                    "Year(creat): " + Data_creation + "/" +
-                   "Bank account: " + Bank_account + "/" + year.Exist_organization(Data_creation) +" years";
+                   "Bank account: " + Bank_account + "/" + Exist_organization(Data_creation) +" years";
         }
         
 

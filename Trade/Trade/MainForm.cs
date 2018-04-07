@@ -99,7 +99,10 @@ namespace Trade
                 
                 Commodity.Commodities.Add(commodity);
                 Refresh_Commodity();
+                Refresh_Commodity_Cost();
                 Clear_Commodity();
+
+                
             }
             catch
             {
@@ -145,6 +148,12 @@ namespace Trade
         {
             lbСommodity.DataSource = null;
             lbСommodity.DataSource = Commodity.Commodities;
+        }
+        private void Refresh_Commodity_Cost()
+        {
+           
+            lbCommodityCost.DataSource = null;
+            lbCommodityCost.DataSource = Commodity.commod_cost;
         }
 
         private void btAddAccounting_Click(object sender, EventArgs e)
@@ -384,6 +393,8 @@ namespace Trade
             {
                 index = Convert.ToInt16(tbIndexator.Text);
                 MessageBox.Show(commodity[index].Name);
+                lbCommodityCost.DataSource = null;
+                lbCommodityCost.DataSource = Commodity.commod_cost;
             }
             catch (Exception)
             {
@@ -391,6 +402,8 @@ namespace Trade
 
             }
             tbIndexator.Clear();
+           
         }
+
     }
 }

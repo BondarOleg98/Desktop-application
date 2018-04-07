@@ -4,19 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Trade.Data
 {
     public class Commodity : Base
     {
-        static public List<Commodity> Commodities = new List<Commodity>();
+        public static List<Commodity> Commodities = new List<Commodity>();
+        public static List<Commodity> commod_cost = new List<Commodity>();
 
         private Guid _item_productID;
 
         public string Name { get; private set; }
         private double cost;
 
-
+        private static double mincost = 1;
 
         public Commodity this[int index]
         {
@@ -40,7 +42,7 @@ namespace Trade.Data
             {
                 if (value < 0)
                 {
-                    cost = 0;
+                    cost = mincost;
                 }
                 else
                 {
@@ -53,18 +55,42 @@ namespace Trade.Data
             }
         }
 
-        public Commodity(string name, double cost, string units, string brand)
+        public Commodity(string name_commod, double cost, string units, string brand)
         {
-            Name = name;
+            Name = name_commod;
             Cost = cost;
             Units = units;
             Brand = brand;
         }
 
         public Commodity()
-        {  }
+        {
+            commod_cost = Commodity_Cost();
+        }
 
-        private string _Cost(double Cost)
+        private List<Commodity> Commodity_Cost()
+        {
+            double res=6;
+            foreach(var commodities in Commodities)
+            {
+              
+                if (commodities.Cost<5)
+                {
+                    commod_cost.Add(commodities);
+                }
+                //private void Refresh_Commodity_Cost()
+                //{
+                //    lbCommodityCost.DataSource = null;
+                //    lbCommodityCost.DataSource = Commodity.commod_cost;
+                //}
+                res++;
+            }
+            return commod_cost;
+
+        }
+
+
+        private static string _Cost(double Cost)
         {
             double cost_half = 0.5 * Cost;
             double cost_fourth = 0.25 * Cost;
@@ -115,7 +141,7 @@ namespace Trade.Data
 
         public Item_product Item_Products { get; }
 
-        public override string  ToString()
+        public override string ToString()
         {
             return "Name: " + Name + "/" +
                    " Brand: " + Brand + "/" +

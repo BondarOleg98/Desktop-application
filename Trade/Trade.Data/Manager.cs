@@ -8,6 +8,8 @@ namespace Trade.Data
 {
     public class Manager : Department
     {
+        static List<Manager> manager = new List<Manager>();
+
         public string Name_manager { get; private set; }
 
         public Manager(string name_manager, string name_depart, 

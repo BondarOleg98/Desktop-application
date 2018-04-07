@@ -3,9 +3,12 @@
   <Class Name="Trade.Data.Accounting" Collapsed="true">
     <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAACAAAAAAAABEAAEAAAAAAgAAAAAAAAQAIABAoBA=</HashCode>
+      <HashCode>AAAAACAAAAAAAAAEAAEAAAAAAgAAAAAAAAQAIABAoBA=</HashCode>
       <FileName>Accounting.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Organization" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Trade.Data.Base" Collapsed="true">
     <Position X="5" Y="0.5" Width="1.5" />
@@ -30,6 +33,9 @@
       <HashCode>AAAAASAAIAAAAIBEAAAABARAIAgAAAAIIAABAACAAAA=</HashCode>
       <FileName>Organization.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Accountings" />
+    </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Commodities" />
     </ShowAsCollectionAssociation>
@@ -63,17 +69,31 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Trade.Data.Department" Collapsed="true">
-    <Position X="1.25" Y="3" Width="1.5" />
+    <Position X="2.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
       <FileName>Department.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Trade.Data.Manager" Collapsed="true">
-    <Position X="4" Y="3.5" Width="1.5" />
+    <Position X="2.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Manager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trade.Data.Products" Collapsed="true">
+    <Position X="9.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Products.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Trade.Data.TypeProduct" Collapsed="true">
+    <Position X="9.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TypeProduct.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
