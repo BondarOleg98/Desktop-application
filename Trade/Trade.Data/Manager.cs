@@ -8,8 +8,6 @@ namespace Trade.Data
 {
     public class Manager : Department
     {
-        static List<Manager> manager = new List<Manager>();
-
         public string Name_manager { get; private set; }
 
         public Manager(string name_manager, string name_depart, 
@@ -21,7 +19,7 @@ namespace Trade.Data
 
         public override string ToString()
         {
-            return "Manager: " + Name_manager;
+            return Name_manager +"/" + Exist_organization(Data_creation);
         }
     }
 }

@@ -8,8 +8,7 @@ namespace Trade.Data
 {
     public class Department : Organization
     {
-        static List<Department> departament = new List<Department>();
-
+        static public List<Organization> Managers = new List<Organization>();
         public string Name_depart { get; private set;}
 
         public Department(string name_depart, string name_org, int data_creation, string bank_account, string head) 
@@ -20,7 +19,7 @@ namespace Trade.Data
 
         public override string ToString()
         {
-            return "Departameent: "+ Name_depart;
+            return Name_depart + "/"+ Exist_organization(Data_creation) ;
         }
 
     }

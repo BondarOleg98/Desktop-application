@@ -35,7 +35,7 @@ namespace Trade.Data
         }
         public Accounting() { }
 
-        static private int registration(int Number_sold, int Number_acquired)
+        public static int registration(int Number_sold, int Number_acquired)
         {
             int remainder = Number_acquired - Number_sold;
             if(remainder==0)
@@ -52,7 +52,7 @@ namespace Trade.Data
             }
         }
 
-        private string registration()
+        public string registration()
         {
             int goods = registration(Number_sold, Number_acquired);
             if (Number_acquired < Number_sold)

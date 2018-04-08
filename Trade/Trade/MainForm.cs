@@ -28,13 +28,28 @@ namespace Trade
                 var value = new Organization(tbNameOrganization.Text,
                 Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
                 tbHeadOrganization.Text);
+                Department department = new Department(tbDepartment.Text, tbNameOrganization.Text,
+                Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
+                tbHeadOrganization.Text);
+                Manager manager = new Manager(tbManager.Text, tbDepartment.Text, tbNameOrganization.Text,
+                Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
+                tbHeadOrganization.Text);
                 if (Convert.ToInt32(tbDataCreationOrganization.Text) <= 1980)
                 {
                     throw new Exception();
                 }
+                Organization.Departments.Add(department);
+                Refresh_Organization_Departaments();
+
                 Organization.Organizations.Add(value.ID, value);
                 Refresh_Organization();
+
+                Department.Managers.Add(manager);
+                Refresh_Organization_Manager();
+
+                Clear_Organization_Manager();
                 Clear_Organization();
+                Clear_Organization_Departments();
             }
             catch (Exception)
             {
@@ -53,10 +68,26 @@ namespace Trade
                 var newvalue = new Organization(tbNameOrganization.Text,
                     Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
                     tbHeadOrganization.Text);
+            
                 Organization.Organizations.Remove(id.ID);
                 Organization.Organizations.Add(newvalue.ID, newvalue);
+
+                int index1 = lbDepartments.SelectedIndex;
+                Organization.Departments[index1] = new Department(tbDepartment.Text, tbNameOrganization.Text,
+                Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
+                tbHeadOrganization.Text);
+
+                int index2 = lbManager.SelectedIndex;
+                Department.Managers[index2] = new Manager(tbManager.Text, tbDepartment.Text, tbNameOrganization.Text,
+                Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
+                tbHeadOrganization.Text);
+
+                Refresh_Organization_Manager();
                 Refresh_Organization();
+                Refresh_Organization_Departaments();
                 Clear_Organization();
+                Clear_Organization_Departments();
+                Clear_Organization_Manager();
             }
             catch
             {
@@ -69,9 +100,15 @@ namespace Trade
         {
             try
             {
+                int index1 = lbDepartments.SelectedIndex;
+                Organization.Departments.RemoveAt(index1);
+                Refresh_Organization_Departaments();
+                int index2 = lbManager.SelectedIndex;
+                Department.Managers.RemoveAt(index2);
+                Refresh_Organization_Manager();
                 var id = (Organization)lbOrganization.SelectedItem;
                 Organization.Organizations.Remove(id.ID);
-                Refresh_Organization();
+                Refresh_Organization();           
             }
             catch
             {
@@ -84,6 +121,16 @@ namespace Trade
         {
             lbOrganization.DataSource = null;
             lbOrganization.DataSource = Organization.Organizations.Values.ToList();
+        }
+        private void Refresh_Organization_Departaments()
+        {
+            lbDepartments.DataSource = null;
+            lbDepartments.DataSource = Organization.Departments;
+        }
+        private void Refresh_Organization_Manager()
+        {
+            lbManager.DataSource = null;
+            lbManager.DataSource = Department.Managers;
         }
 
         private void btAddСommodity_Click(object sender, EventArgs e)
@@ -99,7 +146,6 @@ namespace Trade
                 
                 Commodity.Commodities.Add(commodity);
                 Refresh_Commodity();
-                Refresh_Commodity_Cost();
                 Clear_Commodity();
 
                 
@@ -148,12 +194,6 @@ namespace Trade
         {
             lbСommodity.DataSource = null;
             lbСommodity.DataSource = Commodity.Commodities;
-        }
-        private void Refresh_Commodity_Cost()
-        {
-           
-            lbCommodityCost.DataSource = null;
-            lbCommodityCost.DataSource = Commodity.commod_cost;
         }
 
         private void btAddAccounting_Click(object sender, EventArgs e)
@@ -273,6 +313,14 @@ namespace Trade
             tbBankAccountOrganization.Clear();
             tbDataCreationOrganization.Clear();
         }
+        private void Clear_Organization_Departments()
+        {
+            tbDepartment.Clear();
+        }
+        private void Clear_Organization_Manager()
+        {
+            tbManager.Clear();
+        }
 
         private void Clear_Accounting()
         {
@@ -309,6 +357,7 @@ namespace Trade
             if(lbOrganization.SelectedItem!=null)
             {
                 var organization = (Organization)lbOrganization.SelectedItem;
+                var organization_depart = (Department)lbDepartments.SelectedItem;
                 tbBankAccountOrganization.Text = organization.Bank_account;
                 tbDataCreationOrganization.Text = organization.Data_creation.ToString();
                 tbHeadOrganization.Text = organization.Head;
@@ -393,17 +442,19 @@ namespace Trade
             {
                 index = Convert.ToInt16(tbIndexator.Text);
                 MessageBox.Show(commodity[index].Name);
-                lbCommodityCost.DataSource = null;
-                lbCommodityCost.DataSource = Commodity.commod_cost;
             }
             catch (Exception)
             {
                 MessageBox.Show("Error: number is not valid");
 
             }
-            tbIndexator.Clear();
-           
+            tbIndexator.Clear();        
         }
 
+        private void btCommoditiesCost_Click(object sender, EventArgs e)
+        {
+            lbCommodityCost.DataSource = null;
+            lbCommodityCost.DataSource = Commodity.Commodity_Cost();
+        }
     }
 }

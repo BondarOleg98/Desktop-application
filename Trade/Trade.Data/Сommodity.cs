@@ -64,33 +64,25 @@ namespace Trade.Data
         }
 
         public Commodity()
-        {
-            commod_cost = Commodity_Cost();
-        }
+        { }
 
-        private List<Commodity> Commodity_Cost()
+        public static List<Commodity> Commodity_Cost()
         {
-            double res=6;
+          
             foreach(var commodities in Commodities)
             {
               
-                if (commodities.Cost<5)
+                if (commodities.Cost<=10)
                 {
                     commod_cost.Add(commodities);
                 }
-                //private void Refresh_Commodity_Cost()
-                //{
-                //    lbCommodityCost.DataSource = null;
-                //    lbCommodityCost.DataSource = Commodity.commod_cost;
-                //}
-                res++;
+              
             }
             return commod_cost;
-
         }
 
 
-        private static string _Cost(double Cost)
+        public static string _Cost(double Cost)
         {
             double cost_half = 0.5 * Cost;
             double cost_fourth = 0.25 * Cost;

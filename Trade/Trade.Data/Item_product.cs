@@ -30,7 +30,7 @@ namespace Trade.Data
             Short_name = Short_Name(Name);
         }
 
-        static private string Short_Name(string Name)
+        public static string Short_Name(string Name)
         {
             string result;
             int num;

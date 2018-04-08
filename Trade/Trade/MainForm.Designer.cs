@@ -81,6 +81,15 @@
             this.btIndex = new System.Windows.Forms.Button();
             this.lbCommodityCost = new System.Windows.Forms.ListBox();
             this.labCommodityCost = new System.Windows.Forms.Label();
+            this.btCommoditiesCost = new System.Windows.Forms.Button();
+            this.tbManager = new System.Windows.Forms.TextBox();
+            this.tbDepartment = new System.Windows.Forms.TextBox();
+            this.labDepartments = new System.Windows.Forms.Label();
+            this.labManager = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbDepartments = new System.Windows.Forms.ListBox();
+            this.lbManager = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btDeleteOrganization
@@ -95,7 +104,7 @@
             // 
             // tbNameOrganization
             // 
-            this.tbNameOrganization.Location = new System.Drawing.Point(498, 25);
+            this.tbNameOrganization.Location = new System.Drawing.Point(370, 44);
             this.tbNameOrganization.Name = "tbNameOrganization";
             this.tbNameOrganization.Size = new System.Drawing.Size(109, 20);
             this.tbNameOrganization.TabIndex = 1;
@@ -125,7 +134,7 @@
             this.lbOrganization.FormattingEnabled = true;
             this.lbOrganization.Location = new System.Drawing.Point(12, 42);
             this.lbOrganization.Name = "lbOrganization";
-            this.lbOrganization.Size = new System.Drawing.Size(466, 95);
+            this.lbOrganization.Size = new System.Drawing.Size(337, 95);
             this.lbOrganization.TabIndex = 5;
             this.lbOrganization.SelectedIndexChanged += new System.EventHandler(this.lbOrganization_SelectedIndexChanged);
             // 
@@ -143,7 +152,7 @@
             this.lbItemProduct.FormattingEnabled = true;
             this.lbItemProduct.Location = new System.Drawing.Point(12, 464);
             this.lbItemProduct.Name = "lbItemProduct";
-            this.lbItemProduct.Size = new System.Drawing.Size(334, 95);
+            this.lbItemProduct.Size = new System.Drawing.Size(466, 95);
             this.lbItemProduct.TabIndex = 7;
             this.lbItemProduct.SelectedIndexChanged += new System.EventHandler(this.lbItemProduct_SelectedIndexChanged);
             // 
@@ -158,7 +167,7 @@
             // 
             // tbNameItemProduct
             // 
-            this.tbNameItemProduct.Location = new System.Drawing.Point(355, 480);
+            this.tbNameItemProduct.Location = new System.Drawing.Point(504, 496);
             this.tbNameItemProduct.Name = "tbNameItemProduct";
             this.tbNameItemProduct.Size = new System.Drawing.Size(109, 20);
             this.tbNameItemProduct.TabIndex = 10;
@@ -202,7 +211,7 @@
             // 
             // btAddItemProduct
             // 
-            this.btAddItemProduct.Location = new System.Drawing.Point(488, 460);
+            this.btAddItemProduct.Location = new System.Drawing.Point(630, 460);
             this.btAddItemProduct.Name = "btAddItemProduct";
             this.btAddItemProduct.Size = new System.Drawing.Size(109, 30);
             this.btAddItemProduct.TabIndex = 15;
@@ -212,7 +221,7 @@
             // 
             // btEditItemProduct
             // 
-            this.btEditItemProduct.Location = new System.Drawing.Point(488, 496);
+            this.btEditItemProduct.Location = new System.Drawing.Point(630, 496);
             this.btEditItemProduct.Name = "btEditItemProduct";
             this.btEditItemProduct.Size = new System.Drawing.Size(109, 30);
             this.btEditItemProduct.TabIndex = 16;
@@ -222,7 +231,7 @@
             // 
             // btDeleteItemProduct
             // 
-            this.btDeleteItemProduct.Location = new System.Drawing.Point(488, 529);
+            this.btDeleteItemProduct.Location = new System.Drawing.Point(630, 529);
             this.btDeleteItemProduct.Name = "btDeleteItemProduct";
             this.btDeleteItemProduct.Size = new System.Drawing.Size(109, 30);
             this.btDeleteItemProduct.TabIndex = 17;
@@ -263,7 +272,7 @@
             // labOrganization
             // 
             this.labOrganization.AutoSize = true;
-            this.labOrganization.Location = new System.Drawing.Point(212, 21);
+            this.labOrganization.Location = new System.Drawing.Point(142, 25);
             this.labOrganization.Name = "labOrganization";
             this.labOrganization.Size = new System.Drawing.Size(71, 13);
             this.labOrganization.TabIndex = 21;
@@ -281,7 +290,7 @@
             // labItemProduct
             // 
             this.labItemProduct.AutoSize = true;
-            this.labItemProduct.Location = new System.Drawing.Point(146, 448);
+            this.labItemProduct.Location = new System.Drawing.Point(212, 445);
             this.labItemProduct.Name = "labItemProduct";
             this.labItemProduct.Size = new System.Drawing.Size(71, 13);
             this.labItemProduct.TabIndex = 23;
@@ -298,7 +307,7 @@
             // 
             // btTransitionDatabaze
             // 
-            this.btTransitionDatabaze.Location = new System.Drawing.Point(708, 523);
+            this.btTransitionDatabaze.Location = new System.Drawing.Point(766, 501);
             this.btTransitionDatabaze.Name = "btTransitionDatabaze";
             this.btTransitionDatabaze.Size = new System.Drawing.Size(84, 35);
             this.btTransitionDatabaze.TabIndex = 25;
@@ -308,21 +317,21 @@
             // 
             // tbDataCreationOrganization
             // 
-            this.tbDataCreationOrganization.Location = new System.Drawing.Point(498, 63);
+            this.tbDataCreationOrganization.Location = new System.Drawing.Point(370, 80);
             this.tbDataCreationOrganization.Name = "tbDataCreationOrganization";
             this.tbDataCreationOrganization.Size = new System.Drawing.Size(109, 20);
             this.tbDataCreationOrganization.TabIndex = 26;
             // 
             // tbBankAccountOrganization
             // 
-            this.tbBankAccountOrganization.Location = new System.Drawing.Point(498, 100);
+            this.tbBankAccountOrganization.Location = new System.Drawing.Point(498, 44);
             this.tbBankAccountOrganization.Name = "tbBankAccountOrganization";
             this.tbBankAccountOrganization.Size = new System.Drawing.Size(109, 20);
             this.tbBankAccountOrganization.TabIndex = 27;
             // 
             // tbHeadOrganization
             // 
-            this.tbHeadOrganization.Location = new System.Drawing.Point(498, 138);
+            this.tbHeadOrganization.Location = new System.Drawing.Point(369, 117);
             this.tbHeadOrganization.Name = "tbHeadOrganization";
             this.tbHeadOrganization.Size = new System.Drawing.Size(109, 20);
             this.tbHeadOrganization.TabIndex = 28;
@@ -371,7 +380,7 @@
             // 
             // tbSerialNumberItemProduct
             // 
-            this.tbSerialNumberItemProduct.Location = new System.Drawing.Point(354, 539);
+            this.tbSerialNumberItemProduct.Location = new System.Drawing.Point(504, 535);
             this.tbSerialNumberItemProduct.Name = "tbSerialNumberItemProduct";
             this.tbSerialNumberItemProduct.Size = new System.Drawing.Size(109, 20);
             this.tbSerialNumberItemProduct.TabIndex = 35;
@@ -379,7 +388,7 @@
             // labNameOrganization
             // 
             this.labNameOrganization.AutoSize = true;
-            this.labNameOrganization.Location = new System.Drawing.Point(500, 9);
+            this.labNameOrganization.Location = new System.Drawing.Point(371, 25);
             this.labNameOrganization.Name = "labNameOrganization";
             this.labNameOrganization.Size = new System.Drawing.Size(107, 13);
             this.labNameOrganization.TabIndex = 36;
@@ -388,7 +397,7 @@
             // labDataCreation
             // 
             this.labDataCreation.AutoSize = true;
-            this.labDataCreation.Location = new System.Drawing.Point(485, 47);
+            this.labDataCreation.Location = new System.Drawing.Point(355, 64);
             this.labDataCreation.Name = "labDataCreation";
             this.labDataCreation.Size = new System.Drawing.Size(140, 13);
             this.labDataCreation.TabIndex = 37;
@@ -397,7 +406,7 @@
             // labBankAccount
             // 
             this.labBankAccount.AutoSize = true;
-            this.labBankAccount.Location = new System.Drawing.Point(510, 84);
+            this.labBankAccount.Location = new System.Drawing.Point(509, 27);
             this.labBankAccount.Name = "labBankAccount";
             this.labBankAccount.Size = new System.Drawing.Size(86, 13);
             this.labBankAccount.TabIndex = 38;
@@ -406,7 +415,7 @@
             // labHead
             // 
             this.labHead.AutoSize = true;
-            this.labHead.Location = new System.Drawing.Point(500, 122);
+            this.labHead.Location = new System.Drawing.Point(372, 100);
             this.labHead.Name = "labHead";
             this.labHead.Size = new System.Drawing.Size(100, 13);
             this.labHead.TabIndex = 39;
@@ -478,7 +487,7 @@
             // labSerialNumber
             // 
             this.labSerialNumber.AutoSize = true;
-            this.labSerialNumber.Location = new System.Drawing.Point(371, 523);
+            this.labSerialNumber.Location = new System.Drawing.Point(526, 519);
             this.labSerialNumber.Name = "labSerialNumber";
             this.labSerialNumber.Size = new System.Drawing.Size(71, 13);
             this.labSerialNumber.TabIndex = 47;
@@ -487,7 +496,7 @@
             // labNameItemProduct
             // 
             this.labNameItemProduct.AutoSize = true;
-            this.labNameItemProduct.Location = new System.Drawing.Point(352, 464);
+            this.labNameItemProduct.Location = new System.Drawing.Point(502, 477);
             this.labNameItemProduct.Name = "labNameItemProduct";
             this.labNameItemProduct.Size = new System.Drawing.Size(111, 13);
             this.labNameItemProduct.TabIndex = 48;
@@ -495,7 +504,7 @@
             // 
             // btEnterRecursion
             // 
-            this.btEnterRecursion.Location = new System.Drawing.Point(618, 523);
+            this.btEnterRecursion.Location = new System.Drawing.Point(766, 542);
             this.btEnterRecursion.Name = "btEnterRecursion";
             this.btEnterRecursion.Size = new System.Drawing.Size(84, 35);
             this.btEnterRecursion.TabIndex = 49;
@@ -505,15 +514,15 @@
             // 
             // tbIndexator
             // 
-            this.tbIndexator.Location = new System.Drawing.Point(647, 455);
+            this.tbIndexator.Location = new System.Drawing.Point(748, 395);
             this.tbIndexator.Name = "tbIndexator";
-            this.tbIndexator.Size = new System.Drawing.Size(101, 20);
+            this.tbIndexator.Size = new System.Drawing.Size(122, 20);
             this.tbIndexator.TabIndex = 50;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(648, 439);
+            this.label1.Location = new System.Drawing.Point(764, 379);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
             this.label1.TabIndex = 51;
@@ -521,36 +530,121 @@
             // 
             // btIndex
             // 
-            this.btIndex.Location = new System.Drawing.Point(647, 481);
+            this.btIndex.Location = new System.Drawing.Point(748, 419);
             this.btIndex.Name = "btIndex";
-            this.btIndex.Size = new System.Drawing.Size(101, 23);
+            this.btIndex.Size = new System.Drawing.Size(120, 23);
             this.btIndex.TabIndex = 52;
-            this.btIndex.Text = "data for index";
+            this.btIndex.Text = "Data for index";
             this.btIndex.UseVisualStyleBackColor = true;
             this.btIndex.Click += new System.EventHandler(this.btIndex_Click);
             // 
             // lbCommodityCost
             // 
             this.lbCommodityCost.FormattingEnabled = true;
-            this.lbCommodityCost.Location = new System.Drawing.Point(750, 324);
+            this.lbCommodityCost.Location = new System.Drawing.Point(747, 276);
             this.lbCommodityCost.Name = "lbCommodityCost";
-            this.lbCommodityCost.Size = new System.Drawing.Size(120, 95);
+            this.lbCommodityCost.Size = new System.Drawing.Size(120, 56);
             this.lbCommodityCost.TabIndex = 53;
             // 
             // labCommodityCost
             // 
             this.labCommodityCost.AutoSize = true;
-            this.labCommodityCost.Location = new System.Drawing.Point(758, 304);
+            this.labCommodityCost.Location = new System.Drawing.Point(763, 259);
             this.labCommodityCost.Name = "labCommodityCost";
             this.labCommodityCost.Size = new System.Drawing.Size(92, 13);
             this.labCommodityCost.TabIndex = 54;
             this.labCommodityCost.Text = "Commodities(cost)";
             // 
+            // btCommoditiesCost
+            // 
+            this.btCommoditiesCost.Location = new System.Drawing.Point(748, 338);
+            this.btCommoditiesCost.Name = "btCommoditiesCost";
+            this.btCommoditiesCost.Size = new System.Drawing.Size(119, 38);
+            this.btCommoditiesCost.TabIndex = 55;
+            this.btCommoditiesCost.Text = "Show commodities  for cost";
+            this.btCommoditiesCost.UseVisualStyleBackColor = true;
+            this.btCommoditiesCost.Click += new System.EventHandler(this.btCommoditiesCost_Click);
+            // 
+            // tbManager
+            // 
+            this.tbManager.Location = new System.Drawing.Point(498, 117);
+            this.tbManager.Name = "tbManager";
+            this.tbManager.Size = new System.Drawing.Size(109, 20);
+            this.tbManager.TabIndex = 56;
+            // 
+            // tbDepartment
+            // 
+            this.tbDepartment.Location = new System.Drawing.Point(498, 80);
+            this.tbDepartment.Name = "tbDepartment";
+            this.tbDepartment.Size = new System.Drawing.Size(109, 20);
+            this.tbDepartment.TabIndex = 57;
+            // 
+            // labDepartments
+            // 
+            this.labDepartments.AutoSize = true;
+            this.labDepartments.Location = new System.Drawing.Point(520, 67);
+            this.labDepartments.Name = "labDepartments";
+            this.labDepartments.Size = new System.Drawing.Size(67, 13);
+            this.labDepartments.TabIndex = 58;
+            this.labDepartments.Text = "Departments";
+            // 
+            // labManager
+            // 
+            this.labManager.AutoSize = true;
+            this.labManager.Location = new System.Drawing.Point(526, 103);
+            this.labManager.Name = "labManager";
+            this.labManager.Size = new System.Drawing.Size(49, 13);
+            this.labManager.TabIndex = 59;
+            this.labManager.Text = "Manager";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(774, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 60;
+            this.label2.Text = "Departments";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(783, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 61;
+            this.label3.Text = "Manager";
+            // 
+            // lbDepartments
+            // 
+            this.lbDepartments.FormattingEnabled = true;
+            this.lbDepartments.Location = new System.Drawing.Point(747, 25);
+            this.lbDepartments.Name = "lbDepartments";
+            this.lbDepartments.Size = new System.Drawing.Size(120, 56);
+            this.lbDepartments.TabIndex = 62;
+            // 
+            // lbManager
+            // 
+            this.lbManager.FormattingEnabled = true;
+            this.lbManager.Location = new System.Drawing.Point(747, 103);
+            this.lbManager.Name = "lbManager";
+            this.lbManager.Size = new System.Drawing.Size(120, 56);
+            this.lbManager.TabIndex = 63;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(875, 571);
+            this.ClientSize = new System.Drawing.Size(875, 588);
+            this.Controls.Add(this.lbManager);
+            this.Controls.Add(this.lbDepartments);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labManager);
+            this.Controls.Add(this.labDepartments);
+            this.Controls.Add(this.tbDepartment);
+            this.Controls.Add(this.tbManager);
+            this.Controls.Add(this.btCommoditiesCost);
             this.Controls.Add(this.labCommodityCost);
             this.Controls.Add(this.lbCommodityCost);
             this.Controls.Add(this.btIndex);
@@ -667,6 +761,15 @@
         private System.Windows.Forms.Button btIndex;
         private System.Windows.Forms.ListBox lbCommodityCost;
         private System.Windows.Forms.Label labCommodityCost;
+        private System.Windows.Forms.Button btCommoditiesCost;
+        private System.Windows.Forms.TextBox tbManager;
+        private System.Windows.Forms.TextBox tbDepartment;
+        private System.Windows.Forms.Label labDepartments;
+        private System.Windows.Forms.Label labManager;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox lbDepartments;
+        private System.Windows.Forms.ListBox lbManager;
     }
 }
 

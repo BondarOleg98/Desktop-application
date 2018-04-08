@@ -12,6 +12,8 @@ namespace Trade.Data
     public class Organization : Base
     {
         static public Dictionary<Guid, Organization> Organizations = new Dictionary<Guid, Organization>();
+        static public List<Organization> Departments = new List<Organization>();
+        
         private int data_creation;
 
         private static int last_year = 2200;
@@ -51,7 +53,7 @@ namespace Trade.Data
 
         public Organization() { }
 
-        private static string Exist_organization(int data_creation)
+        public static string Exist_organization(int data_creation)
         {
             int year = DateTime.Now.Year - data_creation;
             if((year<=0)||(year>last_year))
