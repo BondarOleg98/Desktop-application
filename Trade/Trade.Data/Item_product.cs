@@ -21,7 +21,7 @@ namespace Trade.Data
         }
 
         private Guid _commodityID;
-        readonly string Short_name;
+        string Short_name { get; }
 
         public Item_product(string name, string serial_number)
         {

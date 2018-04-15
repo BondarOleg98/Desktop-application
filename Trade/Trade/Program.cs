@@ -17,7 +17,7 @@ namespace Trade
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-            //Application.Run(new AdditionalForm());
+            Application.Run(new ConfigSetting());
         }
 
         static class Data

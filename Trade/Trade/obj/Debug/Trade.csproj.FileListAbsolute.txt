@@ -26,3 +26,4 @@ E:\Project_retail\Trade\Trade\obj\Debug\Trade.csproj.GenerateResource.Cache
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.csproj.CoreCompileInputs.cache
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.exe
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.pdb
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.ConfigSetting.resources

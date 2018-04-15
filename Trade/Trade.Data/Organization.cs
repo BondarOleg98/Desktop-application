@@ -23,6 +23,7 @@ namespace Trade.Data
         public string Head { get; private set; }
         public int Data_creation
         {
+            
             set
             {
                 if ((value < 0)||(value>last_year))

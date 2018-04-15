@@ -16,10 +16,9 @@ namespace Trade.Data
         public int Number_sold { get; private set; }
         public int Number_acquired { get; private set; }
         public double Capital_organization { get; private set; }
-
+        
         readonly int Remainder;
         private string _Remainder { get; set; }
-
 
         private Guid _organizationID;
 
@@ -30,7 +29,7 @@ namespace Trade.Data
             Capital_organization = capital_organization;
 
             Remainder =registration(Number_sold, Number_acquired);
-        
+
             _Remainder = registration();
         }
         public Accounting() { }
@@ -49,7 +48,9 @@ namespace Trade.Data
             else
             {
                 return remainder;
+                
             }
+
         }
 
         public string registration()
@@ -59,6 +60,9 @@ namespace Trade.Data
             {
                 return "Sold more on: " + Math.Abs(Number_acquired-Number_sold);
             }
+
+           
+        
             else if(goods == 0)
             {
                 return "No goods";
@@ -67,6 +71,7 @@ namespace Trade.Data
             {
                 return "Expense:" + goods;
             }
+
         }
 
         public Organization Organization
