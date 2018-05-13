@@ -170,6 +170,7 @@ namespace Trade
                     int index = lbFishProduct.SelectedIndex;
                     Products.Product_fish[index] = new FishProducts(tbGoodCanned.Text, tbTypeFish.Text, tbThread.Text, tbPackage.Text, tbNameGoods.Text, Convert.ToDouble(tbCostСommodity.Text),
                     tbUnitsСommodity.Text, tbGenerator.Text, tbShelfLife.Text);
+
                     Commodity.Commodities[index] = new Commodity(tbNameGoods.Text, Convert.ToDouble(tbCostСommodity.Text),
                     tbUnitsСommodity.Text, tbGenerator.Text, tbShelfLife.Text);
 
@@ -208,35 +209,35 @@ namespace Trade
         {
             if (rbMilk.Checked)
             {
-                //try
-                //{
+                try
+                {
                     Products products = new Products();
                     int index =lbMilkProduct.SelectedIndex;
                     Products.Product_milk.RemoveAt(index);
                     Commodity.Commodities.RemoveAt(index);
                     products.Save(1);
                     lbMilkProduct.DataSource = Products.Load_product(1);
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Error: did not select value");
-                //}
+                }
+                catch
+                {
+                    MessageBox.Show("Error: did not select value");
+                }
             }
             else if (rbFish.Checked)
             {
-                //try
-                //{
+                try
+                {
                     Products products = new Products();
                     int index = lbFishProduct.SelectedIndex;
                     Products.Product_fish.RemoveAt(index);
                     Commodity.Commodities.RemoveAt(index);
                     products.Save(2);
                     lbFishProduct.DataSource = Products.Load_product(2);
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Error: did not select value");
-                //}
+                }
+                catch
+                {
+                MessageBox.Show("Error: did not select value");
+                }
             }
            
         }
@@ -280,6 +281,7 @@ namespace Trade
         {
             Products products = new Products();
             products.Save(2);
+            products.Save(1);
         }
     }
 }

@@ -60,7 +60,7 @@ namespace Trade.Data
             if (flag == 1)
             {
                 DataContractSerializer dsc= new DataContractSerializer(typeof(List<Products>));
-                XmlWriter xmlWriter = XmlWriter.Create("Milk_goods.json");
+                XmlWriter xmlWriter = XmlWriter.Create("Milk_goods.xml");
                 dsc.WriteObject(xmlWriter, Product_milk);
                 xmlWriter.Close();
             }
