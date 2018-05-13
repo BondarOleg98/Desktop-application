@@ -6,21 +6,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml;
+using System.IO;
 
 namespace Trade.Data
 {
-    public class Organization : Base
+    [Serializable]
+    [DataContract]
+    public class Organization : Base, ISerializable
     {
+        [DataMember]
         static public Dictionary<Guid, Organization> Organizations = new Dictionary<Guid, Organization>();
-        static public List<Organization> Departments = new List<Organization>();
         
         private int data_creation;
 
         private static int last_year = 2200;
 
-        public string Name { get; private set; }
-        public string Bank_account { get; private set; }
-        public string Head { get; private set; }
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string Bank_account { get; set; }
+
+        [DataMember]
+        public string Head { get; set; }
+
+        [DataMember]
         public int Data_creation
         {
             
@@ -109,6 +123,58 @@ namespace Trade.Data
         static public List<Organization> __Organizations = new List<Organization>();
 
         public Accounting Accountings { get; }
+
+        ~Organization()
+        {
+                
+        }
+
+        public Dictionary<Guid, Organization> Load(int flag)
+        {
+            if (flag == 1)
+            {
+                DataContractSerializer dsc = new DataContractSerializer(typeof(Dictionary<Guid, Organization>));
+                XmlReader xmlReader = XmlReader.Create("Organizatuion.xml");
+                Dictionary<Guid, Organization> result = (Dictionary<Guid, Organization>)dsc.ReadObject(xmlReader);
+                xmlReader.Close();
+                return result;
+            }
+            else if (flag == 2)
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                FileStream binReader = new FileStream("Organization.dat", FileMode.OpenOrCreate);
+                Dictionary<Guid, Organization> result = (Dictionary<Guid, Organization>)binaryFormatter.Deserialize(binReader);
+                binReader.Close();
+                return result;
+            }
+            else
+            {
+                DataContractJsonSerializer dcjc = new DataContractJsonSerializer(typeof(Dictionary<Guid, Organization>));
+                FileStream jsonReader = new FileStream("Organization.json", FileMode.OpenOrCreate);
+                Dictionary<Guid, Organization> result = (Dictionary<Guid, Organization>)dcjc.ReadObject(jsonReader);
+                jsonReader.Close();
+                return result;
+            }
+        }
+
+        public void Save()
+        {
+            DataContractSerializer dsc = new DataContractSerializer(typeof(Dictionary<Guid, Organization>));
+            DataContractJsonSerializer dcjc = new DataContractJsonSerializer(typeof(Dictionary<Guid, Organization>));
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+
+            FileStream binWriter = new FileStream("Organization.dat", FileMode.OpenOrCreate);
+            XmlWriter xmlWriter = XmlWriter.Create("Organization.xml");
+            FileStream jsonWriter = new FileStream("Organization.json", FileMode.OpenOrCreate);
+
+            binaryFormatter.Serialize(binWriter, Organizations);
+            dsc.WriteObject(xmlWriter, Organizations);
+            dcjc.WriteObject(jsonWriter, Organizations);
+
+            binWriter.Close();
+            xmlWriter.Close();
+            jsonWriter.Close();
+        }
 
         public override string ToString()
         {

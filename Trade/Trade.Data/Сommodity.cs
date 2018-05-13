@@ -1,21 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+using System.Runtime.Serialization;
+using System.Xml;
+using System.IO;
 
 namespace Trade.Data
 {
-    public class Commodity : Base
+    [DataContract]
+    [KnownType(typeof(Industrial))]
+    [KnownType(typeof(Products))]
+    public class Commodity : Base, ISerialize
     {
+        [DataMember]
         public static List<Commodity> Commodities = new List<Commodity>();
+
         public static List<Commodity> commod_cost = new List<Commodity>();
+        public static List<Commodity> commodities = new List<Commodity>();
+       
 
         private Guid _item_productID;
 
-        public string Name { get; private set; }
         private double cost;
 
         private static double mincost = 1;
@@ -32,10 +36,24 @@ namespace Trade.Data
             }
         }
 
-        public string Units { get; private set; }
-        public string Brand { get; private set; }
-        public string Count_of_cost { get; private set; }
+        [DataMember]
+        public static List<Commodity> _commodities = new List<Commodity>();
 
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string Units { get; set; }
+
+        [DataMember]
+        public string Generator { get; set; }
+
+        public string Count_of_cost { get; set; }
+
+        [DataMember]
+        public string Shelf_life { get; set; }
+
+        [DataMember]
         public double Cost
         {
             set
@@ -55,12 +73,15 @@ namespace Trade.Data
             }
         }
 
-        public Commodity(string name_commod, double cost, string units, string brand)
+        public Item_product Item_Products { get; }
+
+        public Commodity(string name, double cost, string units, string generator, string shelf_life)
         {
-            Name = name_commod;
+            Name = name;
             Cost = cost;
             Units = units;
-            Brand = brand;
+            Generator = generator;
+            Shelf_life = shelf_life;
         }
 
         public Commodity()
@@ -81,6 +102,13 @@ namespace Trade.Data
             return commod_cost;
         }
 
+        ~Commodity()
+        {
+            DataContractSerializer dsc = new DataContractSerializer(typeof(List<Commodity>));
+            XmlWriter xmlWriter = XmlWriter.Create("Commodities.xml");
+            dsc.WriteObject(xmlWriter, Commodities);
+            xmlWriter.Close();
+        }
 
         public static string _Cost(double Cost)
         {
@@ -113,7 +141,8 @@ namespace Trade.Data
             }
         }
         static public List<Commodity> _Commodities = new List<Commodity>();
-       
+
+        
         public Item_product Item_Product
         {
             get
@@ -131,14 +160,51 @@ namespace Trade.Data
 
         static public List<Commodity> __Commodities = new List<Commodity>();
 
-        public Item_product Item_Products { get; }
+        public virtual List<Commodity> Load(int flag)
+        {
+            if (flag == 1)
+            {
+                DataContractSerializer dsc = new DataContractSerializer(typeof(List<Commodity>));
+                XmlReader xmlReader = XmlReader.Create("Industrial goods.xml");
+                List<Commodity> result = (List<Commodity>)dsc.ReadObject(xmlReader);
+                xmlReader.Close();
+                return result;
+            }
+            else
+            {
+                DataContractSerializer dsc = new DataContractSerializer(typeof(List<Commodity>));
+                XmlReader xmlReader = XmlReader.Create("Commodities.xml");
+                List<Commodity> result = (List<Commodity>)dsc.ReadObject(xmlReader);
+                xmlReader.Close();
+                return result;
+            }                    
+        }
+
+        public virtual void Save(int flag)
+        {
+            if(flag == 1)
+            {
+                DataContractSerializer dsc = new DataContractSerializer(typeof(List<Commodity>));
+                XmlWriter xmlWriter = XmlWriter.Create("Industrial goods.xml");
+                dsc.WriteObject(xmlWriter, _commodities);
+                xmlWriter.Close();
+            }
+            else
+            {
+                DataContractSerializer dsc = new DataContractSerializer(typeof(List<Commodity>));
+                XmlWriter xmlWriter = XmlWriter.Create("Commodities.xml");
+                dsc.WriteObject(xmlWriter, Commodities);
+                xmlWriter.Close();
+            }              
+        }
 
         public override string ToString()
         {
             return "Name: " + Name + "/" +
-                   " Brand: " + Brand + "/" +
+                   " Generator: " + Generator + "/" +
                    " Units : " + Units + "/" +
-                   " Cost: " + Cost + "/"+ _Cost(Cost);
+                   " Cost: " + Cost + "/"+ _Cost(Cost)+ "/" +
+                   " Shelf life: " + Shelf_life;
         }
     }
 }

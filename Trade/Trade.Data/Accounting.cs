@@ -8,14 +8,15 @@ using System.Windows.Forms;
 
 namespace Trade.Data
 {
+    [Serializable]
     public class Accounting : Base
     {
         static public Dictionary<Guid, Accounting> Accountings = new Dictionary<Guid, Accounting>();
         static public List<Accounting> _Accountings = new List<Accounting>();
 
-        public int Number_sold { get; private set; }
-        public int Number_acquired { get; private set; }
-        public double Capital_organization { get; private set; }
+        public int Number_sold { get; set; }
+        public int Number_acquired { get; set; }
+        public double Capital_organization { get; set; }
         
         readonly int Remainder;
         private string _Remainder { get; set; }

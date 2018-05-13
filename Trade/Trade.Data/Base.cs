@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Trade.Data
 {
+    [Serializable]
+    [DataContract]
     public class Base
     {
-        public Guid ID {get; private set;}
+        [DataMember]
+        public Guid ID {get; set;}
 
         public Base()
         {

@@ -10,7 +10,7 @@ namespace Trade.Data
     {
         static public List<Item_product> Item_products = new List<Item_product>();
        
-        public string Name {get; private set; }
+        public string Name {get; set; }
         public string serial_number;
         public string Serial_number
         {
@@ -20,7 +20,7 @@ namespace Trade.Data
             }
         }
 
-        private Guid _commodityID;
+        public Guid _commodityID;
         string Short_name { get; }
 
         public Item_product(string name, string serial_number)
@@ -70,6 +70,11 @@ namespace Trade.Data
             {
                 _commodityID = value.ID;
             }
+        }
+
+        public Item_product()
+        {
+
         }
 
         static public List<Item_product> _Item_products = new List<Item_product>();

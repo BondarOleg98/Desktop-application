@@ -1,121 +1,171 @@
 ﻿using Trade.Data;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Configuration;
+using System.Collections.Generic;
 
 namespace Trade
 {
     public partial class MainForm : Form
     {
-       
+  
         public MainForm()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
-
-        private void btAddOrganization_Click(object sender, EventArgs e)
+        private void btAdd_Click(object sender, EventArgs e)
         {
-            
-            try
+            if (rbOrganizations.Checked)
             {
-                var value = new Organization(tbNameOrganization.Text,
-                Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
-                tbHeadOrganization.Text);
-                Department department = new Department(tbDepartment.Text, tbNameOrganization.Text,
-                Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
-                tbHeadOrganization.Text);
-                Manager manager = new Manager(tbManager.Text, tbDepartment.Text, tbNameOrganization.Text,
-                Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
-                tbHeadOrganization.Text);
-                if (Convert.ToInt32(tbDataCreationOrganization.Text) <= 1980)
+                try
                 {
-                    throw new Exception();
-                }
-                Organization.Departments.Add(department);
-                Refresh_Organization_Departaments();
-
-                Organization.Organizations.Add(value.ID, value);
-                Refresh_Organization();
-
-                Department.Managers.Add(manager);
-                Refresh_Organization_Manager();
-
-                Clear_Organization_Manager();
-                Clear_Organization();
-                Clear_Organization_Departments();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error: invalid input value");
-                
-                tbDataCreationOrganization.Clear();
-            }
-            
-        }
-
-        private void btEditOrganization_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var id = (Organization)lbOrganization.SelectedItem;
-                var newvalue = new Organization(tbNameOrganization.Text,
+                    var value = new Organization(tbNameOrganization.Text,
                     Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
                     tbHeadOrganization.Text);
-            
-                Organization.Organizations.Remove(id.ID);
-                Organization.Organizations.Add(newvalue.ID, newvalue);
 
-                int index1 = lbDepartments.SelectedIndex;
-                Organization.Departments[index1] = new Department(tbDepartment.Text, tbNameOrganization.Text,
-                Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
-                tbHeadOrganization.Text);
+                    if (Convert.ToInt32(tbDataCreationOrganization.Text) <= 1980)
+                    {
+                        throw new Exception();
+                    }
+                    Organization.Organizations.Add(value.ID, value);
 
-                int index2 = lbManager.SelectedIndex;
-                Department.Managers[index2] = new Manager(tbManager.Text, tbDepartment.Text, tbNameOrganization.Text,
-                Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
-                tbHeadOrganization.Text);
+                    Refresh_Organization();
 
-                Refresh_Organization_Manager();
-                Refresh_Organization();
-                Refresh_Organization_Departaments();
-                Clear_Organization();
-                Clear_Organization_Departments();
-                Clear_Organization_Manager();
+                    Clear_Organization();
+                }
+
+                catch (Exception)
+                {
+                    MessageBox.Show("Error: invalid input value");
+                    tbDataCreationOrganization.Clear();
+                }
             }
-            catch
+            else if (rbAccountings.Checked)
             {
-                MessageBox.Show("Error: Invalid input value");
+                try
+                {
+                    var value = new Accounting(Convert.ToInt32(tbNumberSold.Text),
+                    Convert.ToInt32(tbNumberAcquired.Text), Convert.ToDouble(tbCapitalOrganization.Text));
+                    Accounting.Accountings.Add(value.ID, value);
+                    Refresh_Accounting();
+                    Clear_Accounting();
+                }
+                catch
+                {
+                    MessageBox.Show("Error: invalid input value");
+                    tbNumberAcquired.Clear();
+                    tbNumberSold.Clear();
+                    tbCapitalOrganization.Clear();
+                }
             }
-               
+            else if (rbItemProduct.Checked)
+            {
+                Item_product.Item_products.Add(new Item_product(tbNameItemProduct.Text, tbSerialNumberItemProduct.Text));
+
+                Refresh_Item_Product();
+                Clear_Item_Product();
+            }
         }
 
-        private void btDeleteOrganization_Click(object sender, EventArgs e)
+        private void btEdit_Click(object sender, EventArgs e)
         {
-            try
+            if (rbOrganizations.Checked)
             {
-                int index1 = lbDepartments.SelectedIndex;
-                Organization.Departments.RemoveAt(index1);
-                Refresh_Organization_Departaments();
-                int index2 = lbManager.SelectedIndex;
-                Department.Managers.RemoveAt(index2);
-                Refresh_Organization_Manager();
-                var id = (Organization)lbOrganization.SelectedItem;
-                Organization.Organizations.Remove(id.ID);
-                Refresh_Organization();           
+                try
+                {
+                    var id = (Organization)lbOrganization.SelectedItem;
+                    var newvalue = new Organization(tbNameOrganization.Text,
+                    Convert.ToInt32(tbDataCreationOrganization.Text), tbBankAccountOrganization.Text,
+                    tbHeadOrganization.Text);
+
+                    Organization.Organizations.Remove(id.ID);
+                    Organization.Organizations.Add(newvalue.ID, newvalue);
+
+                    Refresh_Organization();
+                    Clear_Organization();
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Invalid input value");
+                }
             }
-            catch
+            else if (rbAccountings.Checked)
             {
-                MessageBox.Show("Error: did not select value");
+                try
+                {
+                    var value = (Accounting)lbAccounting.SelectedItem;
+                    var newvalue = new Accounting(Convert.ToInt32(tbNumberSold.Text),
+                        Convert.ToInt32(tbNumberAcquired.Text), Convert.ToDouble(tbCapitalOrganization.Text));
+                    Accounting.Accountings.Remove(value.ID);
+                    Accounting.Accountings.Add(newvalue.ID, newvalue);
+                    Refresh_Accounting();
+                    Clear_Accounting();
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Invalid input value");
+                }
             }
-               
+            
+            else if (rbItemProduct.Checked)
+            {
+                try
+                {
+                    int index = lbItemProduct.SelectedIndex;
+                    Item_product.Item_products[index] = new Item_product(tbNameItemProduct.Text, tbSerialNumberItemProduct.Text);
+                    Refresh_Item_Product();
+                    Clear_Item_Product();
+                }
+                catch
+                {
+                    MessageBox.Show("Error: Invalid input value");
+                }
+            }      
+        }
+
+        private void btDelete_Click(object sender, EventArgs e)
+        {
+            if (rbOrganizations.Checked)
+            {
+                try
+                {
+                    var id = (Organization)lbOrganization.SelectedItem;
+                    Organization.Organizations.Remove(id.ID);
+                    
+                    Refresh_Organization();
+                }
+                catch
+                {
+                    MessageBox.Show("Error: did not select value");
+                }
+            }
+            else if (rbAccountings.Checked)
+            {
+                try
+                {
+                    var value = (Accounting)lbAccounting.SelectedItem;
+                    Accounting.Accountings.Remove(value.ID);
+                    Refresh_Accounting();
+                }
+                catch
+                {
+                    MessageBox.Show("Error: did not select value");
+                }
+            }
+            else if (rbItemProduct.Checked)
+            {
+                try
+                {
+                    int index = lbGoods.SelectedIndex;
+                    Item_product.Item_products.RemoveAt(index);
+                    Refresh_Item_Product();
+                }
+                catch
+                {
+                    MessageBox.Show("Error: did not select value");
+                }
+            }
         }
 
         private void Refresh_Organization()
@@ -123,176 +173,11 @@ namespace Trade
             lbOrganization.DataSource = null;
             lbOrganization.DataSource = Organization.Organizations.Values.ToList();
         }
-        private void Refresh_Organization_Departaments()
-        {
-            lbDepartments.DataSource = null;
-            lbDepartments.DataSource = Organization.Departments;
-        }
-        private void Refresh_Organization_Manager()
-        {
-            lbManager.DataSource = null;
-            lbManager.DataSource = Department.Managers;
-        }
-
-        private void btAddСommodity_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if ((tbUnitsСommodity.Text != "kg") && (tbUnitsСommodity.Text != "l") && (tbUnitsСommodity.Text != "g"))
-                {
-                    throw new Exception();
-                }
-                Commodity commodity = new Commodity(tbNameСommodity.Text, Convert.ToDouble(tbCostСommodity.Text),
-                tbUnitsСommodity.Text, tbBrandСommodity.Text);
-                
-                Commodity.Commodities.Add(commodity);
-                Refresh_Commodity();
-                Clear_Commodity();
-
-                
-            }
-            catch
-            {
-                MessageBox.Show("Error: invalid input value");
-                tbCostСommodity.Clear();
-                tbUnitsСommodity.Clear();
-            }
-                
-        }
-
-        private void btEditСommodity_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int index = lbСommodity.SelectedIndex;
-                Commodity.Commodities[index] = new Commodity(tbNameСommodity.Text, Convert.ToDouble(tbCostСommodity.Text),
-                    tbUnitsСommodity.Text, tbBrandСommodity.Text);
-                Refresh_Commodity();
-                Clear_Commodity();
-            }
-            catch
-            {
-                MessageBox.Show("Error: Invalid input value");
-            }
-                
-        }
-
-        private void btDeleteСommodity_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int index = lbСommodity.SelectedIndex;
-                Commodity.Commodities.RemoveAt(index);
-                Refresh_Commodity();
-            }
-            catch
-            {
-                MessageBox.Show("Error: did not select value");
-            }   
-        }
-
-        private void Refresh_Commodity()
-        {
-            lbСommodity.DataSource = null;
-            lbСommodity.DataSource = Commodity.Commodities;
-        }
-
-        private void btAddAccounting_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var value = new Accounting(Convert.ToInt32(tbNumberSold.Text),
-                Convert.ToInt32(tbNumberAcquired.Text), Convert.ToDouble(tbCapitalOrganization.Text));
-                Accounting.Accountings.Add(value.ID, value);
-                Refresh_Accounting();
-                Clear_Accounting();
-            }
-            catch
-            {
-                MessageBox.Show("Error: invalid input value");
-                tbNumberAcquired.Clear();
-                tbNumberSold.Clear();
-                tbCapitalOrganization.Clear();
-            }
-            
-        }
-
-        private void btEditAccounting_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var value = (Accounting)lbAccounting.SelectedItem;
-                var newvalue = new Accounting(Convert.ToInt32(tbNumberSold.Text),
-                    Convert.ToInt32(tbNumberAcquired.Text), Convert.ToDouble(tbCapitalOrganization.Text));
-                Accounting.Accountings.Remove(value.ID);
-                Accounting.Accountings.Add(newvalue.ID, newvalue);
-                Refresh_Accounting();
-                Clear_Accounting();
-            }
-            catch
-            {
-                MessageBox.Show("Error: Invalid input value");
-            }
-               
-        }
-
-        private void btDeleteAccounting_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var value = (Accounting)lbAccounting.SelectedItem;
-                Accounting.Accountings.Remove(value.ID);
-                Refresh_Accounting();
-            }
-            catch
-            {
-                MessageBox.Show("Error: did not select value");
-            }
-        }
 
         private void Refresh_Accounting()
         {
             lbAccounting.DataSource = null;
             lbAccounting.DataSource = Accounting.Accountings.Values.ToList();
-        }
-
-        private void btAddItemProduct_Click(object sender, EventArgs e)
-        {
-            
-            Item_product.Item_products.Add(new Item_product(tbNameItemProduct.Text, tbSerialNumberItemProduct.Text));
-           
-            Refresh_Item_Product();
-            Clear_Item_Product();
-        }
-
-        private void btEditItemProduct_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int index = lbItemProduct.SelectedIndex;
-                Item_product.Item_products[index] = new Item_product(tbNameItemProduct.Text, tbSerialNumberItemProduct.Text);
-                Refresh_Item_Product();
-                Clear_Item_Product();
-            }
-            catch
-            {
-                MessageBox.Show("Error: Invalid input value");
-            }
-        }
-
-        private void btDeleteItemProduct_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int index = lbСommodity.SelectedIndex;
-                Item_product.Item_products.RemoveAt(index);
-                Refresh_Item_Product();
-            }
-            catch
-            {
-                MessageBox.Show("Error: did not select value");
-            }
-           
         }
 
         private void Refresh_Item_Product()
@@ -314,14 +199,6 @@ namespace Trade
             tbBankAccountOrganization.Clear();
             tbDataCreationOrganization.Clear();
         }
-        private void Clear_Organization_Departments()
-        {
-            tbDepartment.Clear();
-        }
-        private void Clear_Organization_Manager()
-        {
-            tbManager.Clear();
-        }
 
         private void Clear_Accounting()
         {
@@ -330,13 +207,7 @@ namespace Trade
             tbCapitalOrganization.Clear();
         }
 
-        private void Clear_Commodity()
-        {
-            tbNameСommodity.Clear();
-            tbUnitsСommodity.Clear();
-            tbCostСommodity.Clear();
-            tbBrandСommodity.Clear();
-        }
+ 
 
         private void btTransitionDatabaze_Click(object sender, EventArgs e)
         {
@@ -346,19 +217,12 @@ namespace Trade
             additional.ShowDialog();
         }
 
-        private void btEnterRecursion_Click(object sender, EventArgs e)
-        {
-            RecursionForm recursion = new RecursionForm();
-            recursion.Owner = this;
-            recursion.ShowDialog();
-        }
-
         private void lbOrganization_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lbOrganization.SelectedItem!=null)
+            if (lbOrganization.SelectedItem != null)
             {
                 var organization = (Organization)lbOrganization.SelectedItem;
-                var organization_depart = (Department)lbDepartments.SelectedItem;
+
                 tbBankAccountOrganization.Text = organization.Bank_account;
                 tbDataCreationOrganization.Text = organization.Data_creation.ToString();
                 tbHeadOrganization.Text = organization.Head;
@@ -377,18 +241,6 @@ namespace Trade
             }
         }
 
-        private void lbСommodity_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lbСommodity.SelectedItem != null)
-            {
-                var commodity = (Commodity)lbСommodity.SelectedItem;
-                tbBrandСommodity.Text = commodity.Brand;
-                tbCostСommodity.Text = commodity.Cost.ToString();
-                tbNameСommodity.Text = commodity.Name;
-                tbUnitsСommodity.Text = commodity.Units;
-            }
-        }
-
         private void lbItemProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lbItemProduct.SelectedItem != null)
@@ -401,23 +253,21 @@ namespace Trade
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            Organization organization1 = new Organization("Phenix", 2016, "2019-ca-12", "Yashch");
-            Organization.Organizations.Add(organization1.ID, organization1);
-            Organization organization2 = new Organization("Space", 2017, "2018-ca-12", "Shchyr");
-            Organization.Organizations.Add(organization2.ID, organization2);
-            Organization organization3 = new Organization("Apple", 2013, "2010-bv-12", "Valiev");
-            Organization.Organizations.Add(organization3.ID, organization3);
-            Refresh_Organization();
+            tbNumberSold.Enabled = false;
+            tbNumberAcquired.Enabled = false;
+            tbSerialNumberItemProduct.Enabled = false;
+            tbCapitalOrganization.Enabled = false;
+            tbNameItemProduct.Enabled = false;
 
-            Commodity commodity1 = new Commodity("Potatoes",2.34, "kg", "-");
-            Commodity.Commodities.Add(commodity1);
-            Commodity commodity2 = new Commodity("Oranges", 10.0, "kg", "-");
-            Commodity.Commodities.Add(commodity2);
-            Commodity commodity3 = new Commodity("Tomatoes", 12.34, "kg", "-");
-            Commodity.Commodities.Add(commodity3);
-            Refresh_Commodity();
+            Organization organization = new Organization();
+            Organization.Organizations = organization.Load(2);
+            lbOrganization.DataSource = Organization.Organizations.Values.ToList();
 
-            Item_product item_Product1 = new Item_product("Vegetables", "62345");
+            Commodity commodity = new Commodity();
+            Commodity.Commodities = commodity.Load(2);
+            lbGoods.DataSource = Commodity.Commodities;
+
+            Item_product item_Product1 = new Item_product("Fish", "62345");
             Item_product.Item_products.Add(item_Product1);
             Item_product item_Product2 = new Item_product("Fruits", "09752");
             Item_product.Item_products.Add(item_Product2);
@@ -425,37 +275,115 @@ namespace Trade
             Item_product.Item_products.Add(item_Product3);
             Refresh_Item_Product();
 
-            Accounting accounting1 = new Accounting(20, 10,  1000);
+            Accounting accounting1 = new Accounting(20, 10, 1000);
             Accounting.Accountings.Add(accounting1.ID, accounting1);
             Accounting accounting2 = new Accounting(20, 30, 2500);
             Accounting.Accountings.Add(accounting2.ID, accounting2);
             Accounting accounting3 = new Accounting(15, 15, 1520);
             Accounting.Accountings.Add(accounting3.ID, accounting3);
-            
-            Refresh_Accounting();
+            Refresh_Accounting(); 
         }
 
-        private void btIndex_Click(object sender, EventArgs e)
+        private void btIndexerStaticMethod_Click(object sender, EventArgs e)
+        {
+            Indexer_StaticMethod indexer_StaticMethod = new Indexer_StaticMethod();
+            indexer_StaticMethod.ShowDialog();
+        }
+
+        private void btIndustrialGoods_Click(object sender, EventArgs e)
+        {                      
+            Industrial_GoodsForm industrial_Goods = new Industrial_GoodsForm();
+            industrial_Goods.ShowDialog();                       
+        }
+
+        private void btRefresh_Click(object sender, EventArgs e)
         {
             Commodity commodity = new Commodity();
-            int index;
-            try
-            {
-                index = Convert.ToInt16(tbIndexator.Text);
-                MessageBox.Show(commodity[index].Name);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error: number is not valid");
 
-            }
-            tbIndexator.Clear();        
+            Commodity.Commodities.Clear();
+            Commodity.Commodities.AddRange(commodity.Load(1));
+            Commodity.Commodities.AddRange(Products.Load_product(1));
+            Commodity.Commodities.AddRange(Products.Load_product(2));
+            lbGoods.DataSource = null;
+            lbGoods.DataSource = Commodity.Commodities;
         }
 
-        private void btCommoditiesCost_Click(object sender, EventArgs e)
+        private void btProducts_Click(object sender, EventArgs e)
         {
-            lbCommodityCost.DataSource = null;
-            lbCommodityCost.DataSource = Commodity.Commodity_Cost();
+            Products_GoodsForm products_GoodsForm = new Products_GoodsForm();
+            products_GoodsForm.ShowDialog();
+        }
+
+        private void rbOrganizations_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbOrganizations.Checked)
+            {
+                tbNumberSold.Enabled = false;
+                tbNumberAcquired.Enabled = false;
+                tbSerialNumberItemProduct.Enabled = false;
+                tbCapitalOrganization.Enabled = false;
+                tbNameItemProduct.Enabled = false;
+            }
+            else
+            {
+                tbNumberSold.Enabled = true;
+                tbNumberAcquired.Enabled = true;
+                tbSerialNumberItemProduct.Enabled = true;
+                tbCapitalOrganization.Enabled = true;
+                tbNameItemProduct.Enabled = true;
+            }
+        }
+
+        private void rbAccountings_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbAccountings.Checked)
+            {
+                tbNameOrganization.Enabled = false;
+                tbHeadOrganization.Enabled = false;
+                tbBankAccountOrganization.Enabled = false;
+                tbDataCreationOrganization.Enabled = false;
+                tbSerialNumberItemProduct.Enabled = false;
+                tbNameItemProduct.Enabled = false;
+            }
+            else
+            {
+                tbNameOrganization.Enabled = true;
+                tbHeadOrganization.Enabled = true;
+                tbBankAccountOrganization.Enabled = true;
+                tbDataCreationOrganization.Enabled = true;
+                tbSerialNumberItemProduct.Enabled = true;
+                tbNameItemProduct.Enabled = true;
+            }
+        }
+
+        private void rbItemProduct_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbItemProduct.Checked)
+            {
+                tbNumberSold.Enabled = false;
+                tbNumberAcquired.Enabled = false;
+                tbCapitalOrganization.Enabled = false;
+                tbNameOrganization.Enabled = false;
+                tbHeadOrganization.Enabled = false;
+                tbBankAccountOrganization.Enabled = false;
+                tbDataCreationOrganization.Enabled = false;
+            }
+            else
+            {
+                tbNumberSold.Enabled = true;
+                tbNumberAcquired.Enabled = true;
+                tbCapitalOrganization.Enabled = true;
+                tbNameOrganization.Enabled = true;
+                tbHeadOrganization.Enabled = true;
+                tbBankAccountOrganization.Enabled = true;
+                tbDataCreationOrganization.Enabled = true;
+            }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Organization organization = new Organization();
+            organization.Save();
         }
     }
 }

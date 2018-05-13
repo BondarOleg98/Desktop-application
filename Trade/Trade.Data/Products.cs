@@ -1,26 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
+using System.Xml;
+using System.IO;
 
 namespace Trade.Data
 {
-    public class Products : TypeProduct
+    [DataContract]
+    [KnownType(typeof(MilkProducts))]
+    [KnownType(typeof(FishProducts))]
+    public class Products : Commodity
     {
-        static public List<Products> products = new List<Products>();
+        [DataMember]
+        static public List<Products> Product_milk = new List<Products>();
 
-        public string Name_product { get; private set; }
+        [DataMember]
+        static public List<Products> Product_fish = new List<Products>();
 
-        public Products(string name_product, string name_typeproduct, string name, double cost, string units, string brand)
-            : base(name_typeproduct, name, cost, units, brand)
+        [DataMember]
+        public string Thread { get; set; }
+
+        [DataMember]
+        public string Package { get; set; }
+
+        public Products(string thread, string package, string name, double cost, string units, string generator, string shelf_life)
+            : base(name, cost, units, generator, shelf_life)
         {
-            Name_product = name_product;
+            Thread = thread;
+            Package = package;
+        }
+        public Products()
+        { }
+
+        public static List<Products> Load_product(int flag)
+        {
+            if (flag == 1)
+            {
+                DataContractSerializer dsc = new DataContractSerializer(typeof(List<Products>));
+                XmlReader xmlReader = XmlReader.Create("Milk_goods.xml");
+                List<Products> result = (List<Products>)dsc.ReadObject(xmlReader);
+                xmlReader.Close();
+                return result;
+            }
+            else
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<Products>));
+                FileStream jsonWrite = File.OpenRead("Fish_goods.json");
+                List<Products> result = (List<Products>)jsonSerializer.ReadObject(jsonWrite);
+                
+                jsonWrite.Close();
+                return result;
+
+            }
         }
 
-        public override string ToString()
+        public override void Save(int flag)
         {
-            return Name_product;
+            if (flag == 1)
+            {
+                DataContractSerializer dsc= new DataContractSerializer(typeof(List<Products>));
+                XmlWriter xmlWriter = XmlWriter.Create("Milk_goods.json");
+                dsc.WriteObject(xmlWriter, Product_milk);
+                xmlWriter.Close();
+            }
+            else if (flag == 2)
+            {
+                DataContractJsonSerializer jsonSerializer = new DataContractJsonSerializer(typeof(List<Products>));
+                FileStream jsonWrite = File.Create("Fish_goods.json");
+                jsonSerializer.WriteObject(jsonWrite, Product_fish);
+                jsonWrite.Close();
+            }
         }
     }
 }

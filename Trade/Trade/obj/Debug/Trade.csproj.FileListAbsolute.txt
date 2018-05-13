@@ -21,9 +21,10 @@ E:\Project_retail\Trade\Trade\obj\Debug\Trade.csprojResolveAssemblyReference.cac
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.AdditionalForm.resources
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.MainForm.resources
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.Properties.Resources.resources
-E:\Project_retail\Trade\Trade\obj\Debug\Trade.RecursionForm.resources
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.csproj.GenerateResource.Cache
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.csproj.CoreCompileInputs.cache
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.exe
 E:\Project_retail\Trade\Trade\obj\Debug\Trade.pdb
-E:\Project_retail\Trade\Trade\obj\Debug\Trade.ConfigSetting.resources
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.Indexer_StaticMethod.resources
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.Industrial_GoodsForm.resources
+E:\Project_retail\Trade\Trade\obj\Debug\Trade.Products_GoodsForm.resources
