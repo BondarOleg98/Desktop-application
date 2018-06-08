@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trade.Data
 {
-    public class СommodityInOrganization : Base
+    public class СommodityInOrganization
     {
         static public List<СommodityInOrganization> CommodityInOrganizations = new List<СommodityInOrganization>();
 

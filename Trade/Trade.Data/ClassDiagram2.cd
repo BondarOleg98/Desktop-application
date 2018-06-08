@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Trade.Data.Accounting" Collapsed="true">
+  <Class Name="Trade.Data.Accounting">
     <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACAAAAAAAAAEAAEAAAAAAgAAAAAAAAQAIABAoBA=</HashCode>
@@ -9,66 +9,86 @@
   </Class>
   <Class Name="Trade.Data.Base" Collapsed="true">
     <Position X="7.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Base.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Trade.Data.FishProducts" Collapsed="true">
-    <Position X="9.5" Y="4.75" Width="1.5" />
+    <Position X="7.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>FishProducts.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Trade.Data.Industrial" Collapsed="true">
-    <Position X="5" Y="3.25" Width="1.5" />
+    <Position X="11.75" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AEAAAAAAAAAAgAAkAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <HashCode>AEAAAAAAAAAAgAAEAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>Industrial.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Trade.Data.Item_product" Collapsed="true">
-    <Position X="2.75" Y="1.75" Width="1.5" />
+  <Class Name="Trade.Data.Item_product">
+    <Position X="5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgAAAgECAAIAAAAEAAAAAQUAAAAAAAAAAgAAAACAAAA=</HashCode>
       <FileName>Item_product.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Trade.Data.MilkProducts" Collapsed="true">
-    <Position X="7.25" Y="4.75" Width="1.5" />
+    <Position X="9.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAIAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
       <FileName>MilkProducts.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Trade.Data.Organization" Collapsed="true">
-    <Position X="14" Y="1.75" Width="1.5" />
+  <Class Name="Trade.Data.Organization">
+    <Position X="2.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAASAAIAAAAIBEACAABARAIAwAAAAIIAABAACAAAA=</HashCode>
+      <HashCode>AAAAgaAAIAAAAIBEAAAABARAIAwAAAAIIAABAACAAAA=</HashCode>
       <FileName>Organization.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Trade.Data.Products" Collapsed="true">
     <Position X="8.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAQAAAAAEAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAIAAAQAAAACAAAAQAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Products.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Trade.Data.Commodity" Collapsed="true">
-    <Position X="7.25" Y="1.75" Width="1.5" />
+    <Position X="9.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CgAAgAgAAAAQEABECAAAABQAAAAQAASAGIBBAAiAAAA=</HashCode>
+      <HashCode>CgAAgIgAAAAQEABECAAAABQAAAAQAASAGIBBAAiAAAA=</HashCode>
       <FileName>Сommodity.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Trade.Data.СommodityInOrganization" Collapsed="true">
-    <Position X="11.75" Y="1.75" Width="1.5" />
+    <Position X="12.5" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAgABIAAAIAA=</HashCode>
       <FileName>СommodityInOrganization.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Interface Name="Trade.Data.ISerializable" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISerializable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Trade.Data.ISerialize" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISerialize.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
