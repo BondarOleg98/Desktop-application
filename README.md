@@ -1,2 +1,2 @@
-#Labs for OOP
-Relationship: many-to-many, one-to-many 
+#Relationship
+Many-to-many, one-to-many 
