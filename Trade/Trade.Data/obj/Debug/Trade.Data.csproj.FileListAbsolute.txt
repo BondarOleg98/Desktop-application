@@ -10,9 +10,3 @@ E:\Project_retail\Trade\Trade.Data\obj\Debug\Trade.Data.csprojResolveAssemblyRef
 E:\Project_retail\Trade\Trade.Data\obj\Debug\Trade.Data.csproj.CoreCompileInputs.cache
 E:\Project_retail\Trade\Trade.Data\obj\Debug\Trade.Data.dll
 E:\Project_retail\Trade\Trade.Data\obj\Debug\Trade.Data.pdb
-H:\Project\C#\Labs_for_OOP\Trade\Trade.Data\bin\Debug\Trade.Data.dll
-H:\Project\C#\Labs_for_OOP\Trade\Trade.Data\bin\Debug\Trade.Data.pdb
-H:\Project\C#\Labs_for_OOP\Trade\Trade.Data\obj\Debug\Trade.Data.csprojAssemblyReference.cache
-H:\Project\C#\Labs_for_OOP\Trade\Trade.Data\obj\Debug\Trade.Data.csproj.CoreCompileInputs.cache
-H:\Project\C#\Labs_for_OOP\Trade\Trade.Data\obj\Debug\Trade.Data.dll
-H:\Project\C#\Labs_for_OOP\Trade\Trade.Data\obj\Debug\Trade.Data.pdb
